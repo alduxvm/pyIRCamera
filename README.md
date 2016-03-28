@@ -4,7 +4,9 @@
 
 Python Module that talks to a Wiimote IR camera connected to an I2C bus.
 
-## What is a PixArt?
+![Working](https://altax.net/images/pyIRCamera/working.jpg "Working")
+
+### What is a PixArt?
 
 This device is a 128x96 monochrome camera with built-in image processing. The camera looks through an infrared pass filter in the remote's plastic casing. The camera's built-in image processing is capable of tracking up to 4 moving objects, and these data are the only data available to the host. Raw pixel data is not available to the host, so the camera cannot be used to take a conventional picture. The built-in processor uses 8x subpixel analysis to provide 1024x768 resolution for the tracked points.
 
@@ -23,11 +25,11 @@ The sensor used for this library is a very good package made by DFRobot, importa
 
 ![Positioning IR Camera](https://altax.net/images/pyIRCamera/ircamera.jpg "Positioning IR Camera")
 
-## Why this module?
+### Why this module?
 
 The only code that is online is for Arduino, its on C. I need to use this sensor with python and a Raspberry Pi. That's the main reason.
 
-# How?
+## How?
 
 * The first step is to gather all components, the sensor and a computer with I2C port. I'm choosing the RPI, due to the fact that I have one in my desk right now. The sensor is approximately $25 USD
 * Connect the sensor to the raspberry pi 
@@ -35,7 +37,7 @@ The only code that is online is for Arduino, its on C. I need to use this sensor
 * Clone this library on the raspberry pi
 * Run ```python test-example.py```
 
-## Activate the raspberry pi I2C
+### Activate the raspberry pi I2C
 
 * Execute ```sudo raspi-config```
 * Go to ```Advanced Options```
@@ -54,7 +56,7 @@ dtparam=i2c_arm=on
 ```
 * Reboot again
 
-## Test the I2C port / Sensor
+### Test the I2C port / Sensor
 
 * With the sensor already connected to the raspberry pi, execute this line: ```sudo i2cdetect -y 1```, if the sensor is connected and working you will see something like this:
 ```
@@ -69,3 +71,9 @@ dtparam=i2c_arm=on
 70: -- -- -- -- -- -- -- -- 
 ```
 * The sensor address is ```0x58```
+
+If everything is alright after this step, you're ready to use this sensor with the raspberry pi!
+
+## Credits
+
+Thanks to RobotFreak to help me debug parts of this code, he is the original author of the Arduino script to read this sensor. This module is based on this script: http://www.dfrobot.com/wiki/index.php/Positioning_ir_camera
