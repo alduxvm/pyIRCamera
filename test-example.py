@@ -31,7 +31,9 @@ while True:
 	elapsed = 0
 
 	camera.getPositions() # Update found IR objects
-	print "Object 1: %d, %d | Object 2: %d, %d | Object 3: %d, %d | Object 4: %d, %d" % (camera.positions['1'][0],camera.positions['1'][1],camera.positions['2'][0],camera.positions['2'][1],camera.positions['3'][0],camera.positions['3'][1],camera.positions['4'][0],camera.positions['4'][1])
+	
+	if camera.positions['found']: # If an IR object is found, print the information
+		print "Object 1: %d, %d | Object 2: %d, %d | Object 3: %d, %d | Object 4: %d, %d" % (camera.positions['1'][0],camera.positions['1'][1],camera.positions['2'][0],camera.positions['2'][1],camera.positions['3'][0],camera.positions['3'][1],camera.positions['4'][0],camera.positions['4'][1])
 	
 	while elapsed < update_rate:
 		elapsed = time() - current # Wait until the loop completes, perfect update_rate loop
